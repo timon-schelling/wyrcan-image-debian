@@ -1,0 +1,34 @@
+name: NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q # Merle
+# unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/route
+# http://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/
+routes:
+  - name: eAPKIBQstWfT41uMpwGb5wWBBGoqavsU
+    targets:
+      - "https://timokrates.de/0"
+  - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
+    targets:
+      - "https://timokrates.de/1"
+  - name: PB7ZBdfzA7ppY3EThG0JFFzubso8s2fg
+    targets:
+      - "https://timokrates.de/2"
+  - name: Stguuv4REANy7pTVA0oLSRkZCWi1DTcH
+    targets:
+      - "https://timokrates.de/3"
+  - name: ikf2eyEssxpvZMV60mpHw7XEeNnTxoKQ
+    targets:
+      - "https://timokrates.de/4"
+  - name: F5KEAf4CSRPx8f0ZYxmV88geZz5lwDXE
+    targets:
+      - "https://timokrates.de/5"
+  - name: v8UhP0OjyMhrCAhfX2emaS572Q5x9RYg
+    targets:
+      - "https://timokrates.de/6"
+  - name: mhiDo3bKuB4UWz3dZSem3m1mFrKzPQFR
+    targets:
+      - "https://timokrates.de/7"
+  - name: RoQHi3ad7cRdljPcXTrWz5ALdUQLSq4r
+    targets:
+      - "https://timokrates.de/8"
+  - name: bLOwzMyzkAAtPueflfozuZ0HFJBQCSLi
+    targets:
+      - "https://timokrates.de/9"
