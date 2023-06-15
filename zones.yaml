@@ -5,7 +5,7 @@ routes:
   - name: eAPKIBQstWfT41uMpwGb5wWBBGoqavsU
     target:
       type: "YouTube"
-      videoId: "dQw4w9WgXcQ"
+      video: "dQw4w9WgXcQ"
   # - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
   #   targets:
   #     - "https://timokrates.de/1"
