@@ -91,7 +91,7 @@ impl Target {
             Target::Image { url } => {
                 let text = format!("<img src=\"{}\"/>", url);
                 let encoded = base64::Engine::encode(&base64::engine::general_purpose::URL_SAFE, text.as_bytes());
-                Some(format!("data:text/html;base64,{}", encoded))
+                Some(format!("data:text/html;charset=utf-8;base64,{}", encoded))
             },
         }
     }
