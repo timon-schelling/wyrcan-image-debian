@@ -6,6 +6,10 @@ routes:
     target:
       type: "YouTube"
       video: "dQw4w9WgXcQ"
+  - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
+    target:
+      type: "Spotify"
+      track: "0D0nm58zp7QfNR1kMSkElZ"
   # - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
   #   targets:
   #     - "https://timokrates.de/1"
