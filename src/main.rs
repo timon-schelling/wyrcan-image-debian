@@ -118,7 +118,7 @@ impl Target {
                                     height: 100%;
                                     background-position: center;
                                     background-repeat: no-repeat;
-                                    background-size: cover;
+                                    background-size: contain;
                                 }}
                             </style>
                         </head>
