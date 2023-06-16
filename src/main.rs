@@ -8,7 +8,7 @@ use axum::{
     routing::get,
     Router,
 };
-use fast_uaparser::OperatingSystem;
+use fast_uaparser::{OperatingSystem, ParserError};
 use rand::seq::SliceRandom;
 use reqwest::{header::USER_AGENT, Client};
 use serde::{Deserialize, Serialize};
@@ -42,6 +42,7 @@ enum Target {
     Spotify { track: String },
 }
 
+#[derive(Clone, Debug)]
 enum Os {
     Linux,
     Android,
@@ -52,10 +53,11 @@ enum Os {
 }
 
 impl FromStr for Os {
-    type Err = ();
+    type Err = ParserError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        match s {
+        let os: OperatingSystem = s.parse()?;
+        match os.family.as_str() {
             "Linux" => Ok(Os::Linux),
             "Android" => Ok(Os::Android),
             "Windows" => Ok(Os::Windows),
@@ -70,7 +72,6 @@ impl Target {
     fn resolve(&self, headers: HeaderMap) -> Option<String> {
         let user_agent_str = headers.get("user-agent")?.to_str().ok()?;
         let os = user_agent_str.parse::<Os>().ok()?;
-
         match self {
             Target::Url { url } => Some(url.clone()),
             Target::Random { targets } => {
@@ -83,7 +84,8 @@ impl Target {
                 _ => Some(format!("https://www.youtube.com/watch?v={}", video)),
             },
             Target::Spotify { track } => match os {
-                Os::Android | Os::AppleMobile => Some(format!("spotify://track/{}", track)),
+                Os::Android => Some(format!("intent://open.spotify.com/track/{}#Intent;package=com.spotify.music;scheme=https;end", track)),
+                Os::AppleMobile => Some(format!("spotify://track/{}", track)),
                 _ => Some(format!("https://open.spotify.com/track/{}", track)),
             },
         }
@@ -139,6 +141,8 @@ async fn handler(
             None => false,
         })
         .next();
+
+    dbg!(route);
 
     let route = match route {
         Some(route) => route,
