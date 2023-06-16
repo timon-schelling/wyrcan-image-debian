@@ -4,36 +4,50 @@ name: NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q # Merle
 routes:
   - name: eAPKIBQstWfT41uMpwGb5wWBBGoqavsU
     target:
-      type: "YouTube"
-      video: "dQw4w9WgXcQ"
+      type: YouTube
+      video: dQw4w9WgXcQ
+
   - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
     target:
-      type: "Spotify"
-      track: "0D0nm58zp7QfNR1kMSkElZ"
-  # - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
-  #   targets:
-  #     - "https://timokrates.de/1"
-  # - name: PB7ZBdfzA7ppY3EThG0JFFzubso8s2fg
-  #   targets:
-  #     - "https://timokrates.de/2"
-  # - name: Stguuv4REANy7pTVA0oLSRkZCWi1DTcH
-  #   targets:
-  #     - "https://timokrates.de/3"
-  # - name: ikf2eyEssxpvZMV60mpHw7XEeNnTxoKQ
-  #   targets:
-  #     - "https://timokrates.de/4"
-  # - name: F5KEAf4CSRPx8f0ZYxmV88geZz5lwDXE
-  #   targets:
-  #     - "https://timokrates.de/5"
-  # - name: v8UhP0OjyMhrCAhfX2emaS572Q5x9RYg
-  #   targets:
-  #     - "https://timokrates.de/6"
-  # - name: mhiDo3bKuB4UWz3dZSem3m1mFrKzPQFR
-  #   targets:
-  #     - "https://timokrates.de/7"
-  # - name: RoQHi3ad7cRdljPcXTrWz5ALdUQLSq4r
-  #   targets:
-  #     - "https://timokrates.de/8"
-  # - name: bLOwzMyzkAAtPueflfozuZ0HFJBQCSLi
-  #   targets:
-  #     - "https://timokrates.de/9"
+      type: Spotify
+      track: 0D0nm58zp7QfNR1kMSkElZ
+
+  - name: PB7ZBdfzA7ppY3EThG0JFFzubso8s2fg
+    targets:
+      type: Url
+      url: https://timokrates.de/1
+
+  - name: Stguuv4REANy7pTVA0oLSRkZCWi1DTcH
+    targets:
+      type: Url
+      url: https://timokrates.de/2
+
+  - name: ikf2eyEssxpvZMV60mpHw7XEeNnTxoKQ
+    targets:
+      type: Url
+      url: https://timokrates.de/3
+
+  - name: F5KEAf4CSRPx8f0ZYxmV88geZz5lwDXE
+    targets:
+      type: Url
+      url: https://timokrates.de/4
+
+  - name: v8UhP0OjyMhrCAhfX2emaS572Q5x9RYg
+    targets:
+      type: Url
+      url: https://timokrates.de/5
+
+  - name: mhiDo3bKuB4UWz3dZSem3m1mFrKzPQFR
+    targets:
+      type: Url
+      url: https://timokrates.de/6
+
+  - name: RoQHi3ad7cRdljPcXTrWz5ALdUQLSq4r
+    targets:
+      type: Url
+      url: https://timokrates.de/7
+
+  - name: bLOwzMyzkAAtPueflfozuZ0HFJBQCSLi
+    targets:
+      type: Url
+      url: https://timokrates.de/8
