@@ -68,26 +68,31 @@ impl FromStr for Os {
     }
 }
 
+enum Resolved {
+    Redirect(String),
+    Html(String),
+}
+
 impl Target {
-    fn resolve(&self, headers: HeaderMap) -> Option<String> {
+    fn resolve(&self, headers: HeaderMap) -> Option<Resolved> {
         let user_agent_str = headers.get("user-agent")?.to_str().ok()?;
         let os = user_agent_str.parse::<Os>().ok()?;
         match self {
-            Target::Url { url } => Some(url.clone()),
+            Target::Url { url } => Some(Resolved::Redirect(url.clone())),
             Target::Random { targets } => {
                 let target = targets.choose(&mut rand::thread_rng())?;
                 target.resolve(headers)
             },
-            Target::YouTube { video } => match os {
-                Os::Android => Some(format!("intent://youtu.be/{}#Intent;package=com.google.android.youtube;scheme=https;end", video)),
-                Os::AppleMobile => Some(format!("vnd.youtube://www.youtube.com/watch?v={}", video)),
-                _ => Some(format!("https://www.youtube.com/watch?v={}", video)),
-            },
-            Target::Spotify { track } => match os {
-                Os::Android => Some(format!("intent://open.spotify.com/track/{}#Intent;package=com.spotify.music;scheme=https;end", track)),
-                Os::AppleMobile => Some(format!("spotify://track/{}", track)),
-                _ => Some(format!("https://open.spotify.com/track/{}", track)),
-            },
+            Target::YouTube { video } => Some(Resolved::Redirect(match os {
+                Os::Android => format!("intent://youtu.be/{}#Intent;package=com.google.android.youtube;scheme=https;end", video),
+                Os::AppleMobile => format!("vnd.youtube://www.youtube.com/watch?v={}", video),
+                _ => format!("https://www.youtube.com/watch?v={}", video),
+            })),
+            Target::Spotify { track } => Some(Resolved::Redirect(match os {
+                Os::Android => format!("intent://open.spotify.com/track/{}#Intent;package=com.spotify.music;scheme=https;end", track),
+                Os::AppleMobile => format!("spotify://track/{}", track),
+                _ => format!("https://open.spotify.com/track/{}", track),
+            })),
             Target::Image { url } => {
                 let text = format!("<img src=\"{}\"/>", url);
                 let encoded = base64::Engine::encode(&base64::engine::general_purpose::STANDARD, text.as_bytes());

@@ -1,19 +1,120 @@
 name: NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q # Merle
 # unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/route
 # https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/
+
+#vlUVa4JpZJLauTZr6XSJfq9N2NhuLCMT 0 Lost
+#OVBVYfbiom5d3ZI8YJMSe8Xy9vYXcxGL 1 Heart
+#iZd0qv0oqZYRNRnx6IeYfVQIQz5VznXU 2 Galaxy
+#cI0504bPVq0Y9wzZn16n8OVmxszhAGVQ 3 Ocean
+#FKcHPQKYbmyziLL41XV2b51Og6Bl3uZM 4 Mountain
+#zE3vwbQwkAZ7Lz0hMFu49SY5QorVZDeO 5 Swerle
+#eGMS80uMZC8PuRNnAbRyBFD5ZGQnUdZp 6 Ravine
+#knVzDKDCM9cMAKPrfcLg6t3WNb157UvH 7 Infinity
+#Y1MDNNXyy6Hb0zfUPzofhcw6q7OlIMbm 8 Epsilon
+#dVHbxigIbR2LpQ0HsloClbQkpTNNt5jG 9 Moon
+#7VCrMmrrtrHUF47ncDP8UHrTqX6JrSlm 10 Cube
+#t9Flo4OuPf3yr1CNLk5ReDwnctSDNaDk 11 Star
+#06ofqIIcAVi6UIKpEnSaQxFlRRR4eHKd 12 Wave
+
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/vlUVa4JpZJLauTZr6XSJfq9N2NhuLCMT 0 Lost
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/OVBVYfbiom5d3ZI8YJMSe8Xy9vYXcxGL 1 Heart
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/iZd0qv0oqZYRNRnx6IeYfVQIQz5VznXU 2 Galaxy
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/cI0504bPVq0Y9wzZn16n8OVmxszhAGVQ 3 Ocean
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/FKcHPQKYbmyziLL41XV2b51Og6Bl3uZM 4 Mountain
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/zE3vwbQwkAZ7Lz0hMFu49SY5QorVZDeO 5 Swerle
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/eGMS80uMZC8PuRNnAbRyBFD5ZGQnUdZp 6 Ravine
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/knVzDKDCM9cMAKPrfcLg6t3WNb157UvH 7 Infinity
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/Y1MDNNXyy6Hb0zfUPzofhcw6q7OlIMbm 8 Epsilon
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/dVHbxigIbR2LpQ0HsloClbQkpTNNt5jG 9 Moon
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/7VCrMmrrtrHUF47ncDP8UHrTqX6JrSlm 10 Cube
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/t9Flo4OuPf3yr1CNLk5ReDwnctSDNaDk 11 Star
+# https://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/06ofqIIcAVi6UIKpEnSaQxFlRRR4eHKd 12 Wave
+
 routes:
 
-  - name: eAPKIBQstWfT41uMpwGb5wWBBGoqavsU
+  - name: vlUVa4JpZJLauTZr6XSJfq9N2NhuLCMT # 0 Lost
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/help
+
+  - name: OVBVYfbiom5d3ZI8YJMSe8Xy9vYXcxGL # 1 Heart
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/1
+
+  - name: iZd0qv0oqZYRNRnx6IeYfVQIQz5VznXU # 2 Galaxy
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/2
+
+  - name: cI0504bPVq0Y9wzZn16n8OVmxszhAGVQ # 3 Ocean
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/3
+
+  - name: FKcHPQKYbmyziLL41XV2b51Og6Bl3uZM # 4 Mountain
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/4
+
+  - name: zE3vwbQwkAZ7Lz0hMFu49SY5QorVZDeO # 5 Swerle
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/5
+
+  - name: eGMS80uMZC8PuRNnAbRyBFD5ZGQnUdZp # 6 Ravine
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/6
+
+  - name: knVzDKDCM9cMAKPrfcLg6t3WNb157UvH # 7 Infinity
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/7
+
+  - name: Y1MDNNXyy6Hb0zfUPzofhcw6q7OlIMbm # 8 Epsilon
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/8
+
+  - name: dVHbxigIbR2LpQ0HsloClbQkpTNNt5jG # 9 Moon
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/9
+
+  - name: 7VCrMmrrtrHUF47ncDP8UHrTqX6JrSlm # 10 Cube
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/10
+
+  - name: t9Flo4OuPf3yr1CNLk5ReDwnctSDNaDk # 11 Star
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/11
+
+  - name: 06ofqIIcAVi6UIKpEnSaQxFlRRR4eHKd # 12 Wave
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/12
+
+
+
+  - name: test
+    target:
+      type: Url
+      url: https://timokrates.de/unme-nfcbox/test
+
+  - name: youtube
     target:
       type: YouTube
       video: dQw4w9WgXcQ
 
-  - name: 897SRxTWH8S4WxMA7zOkOFeb9Lyi1xZf
+  - name: spotify
     target:
       type: Spotify
       track: 0D0nm58zp7QfNR1kMSkElZ
 
-  - name: bLOwzMyzkAAtPueflfozuZ0HFJBQCSLi
+  - name: random
     target:
       type: Random
       targets:
@@ -24,39 +125,7 @@ routes:
         - type: Spotify
           track: 0D0nm58zp7QfNR1kMSkElZ
 
-  - name: RoQHi3ad7cRdljPcXTrWz5ALdUQLSq4r
+  - name: image
     target:
-      type: Random
-      targets:
-        - type: Image
-          url: https://am3pap005files.storage.live.com/y4m_ptwu-Qa4wFOqJySJzu3PB3yMIFuZHsLvYTFrwMCAD9-VOkv8GsZJ4_XOYSnrc7XX4ucVfCg2ymAy158rhXTRtPHkp512d-cBqGtzO5Lh8kzqAp1Y7JPovFY7zK_43hbIXdqaFzBIYsqyoWrCiHQ3vl_GlDNzfxCoJ6X91ui69y7qadf0ifuRrxrBuXeqGeY?width=2252&height=4000&cropmode=none
-
-  - name: PB7ZBdfzA7ppY3EThG0JFFzubso8s2fg
-    target:
-      type: Url
-      url: https://timokrates.de/1
-
-  - name: Stguuv4REANy7pTVA0oLSRkZCWi1DTcH
-    target:
-      type: Url
-      url: https://timokrates.de/2
-
-  - name: ikf2eyEssxpvZMV60mpHw7XEeNnTxoKQ
-    target:
-      type: Url
-      url: https://timokrates.de/3
-
-  - name: F5KEAf4CSRPx8f0ZYxmV88geZz5lwDXE
-    target:
-      type: Url
-      url: https://timokrates.de/4
-
-  - name: v8UhP0OjyMhrCAhfX2emaS572Q5x9RYg
-    target:
-      type: Url
-      url: https://timokrates.de/5
-
-  - name: mhiDo3bKuB4UWz3dZSem3m1mFrKzPQFR
-    target:
-      type: Url
-      url: https://timokrates.de/6
+      type: Image
+      url: https://am3pap005files.storage.live.com/y4m_ptwu-Qa4wFOqJySJzu3PB3yMIFuZHsLvYTFrwMCAD9-VOkv8GsZJ4_XOYSnrc7XX4ucVfCg2ymAy158rhXTRtPHkp512d-cBqGtzO5Lh8kzqAp1Y7JPovFY7zK_43hbIXdqaFzBIYsqyoWrCiHQ3vl_GlDNzfxCoJ6X91ui69y7qadf0ifuRrxrBuXeqGeY?width=2252&height=4000&cropmode=none
