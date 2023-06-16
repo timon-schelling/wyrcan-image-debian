@@ -10,12 +10,11 @@ use axum::{
 };
 use fast_uaparser::{OperatingSystem, ParserError};
 use rand::seq::SliceRandom;
-use reqwest::{header::USER_AGENT, Client};
 use serde::{Deserialize, Serialize};
 
 #[shuttle_runtime::main]
 async fn routing() -> shuttle_axum::ShuttleAxum {
-    fast_uaparser::init();
+    fast_uaparser::init().expect("Failed to initialize uaparser");
 
     let router = Router::new().route("/:zone/:route", get(handler));
     Ok(router.into())
@@ -89,7 +88,11 @@ impl Target {
                 Os::AppleMobile => Some(format!("spotify://track/{}", track)),
                 _ => Some(format!("https://open.spotify.com/track/{}", track)),
             },
-            Target::Image { url } => Some(format!("data:text/html,<img src=\"{}\"/>", url)),
+            Target::Image { url } => {
+                let text = format!("<img src=\"{}\"/>", url);
+                let encoded = base64::Engine::encode(&base64::engine::general_purpose::URL_SAFE, text.as_bytes());
+                Some(format!("data:text/html;base64,{}", encoded))
+            },
         }
     }
 }
@@ -167,7 +170,7 @@ async fn handler(
 }
 
 async fn get_raw_file_content() -> Result<String, reqwest::Error> {
-    let client = Client::new();
+    let client = reqwest::Client::new();
 
     let owner = "timon-schelling";
     let repo = "rtrs";
