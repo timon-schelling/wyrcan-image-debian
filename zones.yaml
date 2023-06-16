@@ -28,8 +28,8 @@ routes:
     target:
       type: Random
       targets:
-        - type: Url
-          url: "data:data:text/html;charset=utf-8,%3Cimg%20src%3D%22https%3A%2F%2Fam3pap005files.storage.live.com%2Fy4m_ptwu-Qa4wFOqJySJzu3PB3yMIFuZHsLvYTFrwMCAD9-VOkv8GsZJ4_XOYSnrc7XX4ucVfCg2ymAy158rhXTRtPHkp512d-cBqGtzO5Lh8kzqAp1Y7JPovFY7zK_43hbIXdqaFzBIYsqyoWrCiHQ3vl_GlDNzfxCoJ6X91ui69y7qadf0ifuRrxrBuXeqGeY%3Fwidth%3D2252%26height%3D4000%26cropmode%3Dnone%22%2F%3E"
+        - type: Image
+          url: https://am3pap005files.storage.live.com/y4m_ptwu-Qa4wFOqJySJzu3PB3yMIFuZHsLvYTFrwMCAD9-VOkv8GsZJ4_XOYSnrc7XX4ucVfCg2ymAy158rhXTRtPHkp512d-cBqGtzO5Lh8kzqAp1Y7JPovFY7zK_43hbIXdqaFzBIYsqyoWrCiHQ3vl_GlDNzfxCoJ6X91ui69y7qadf0ifuRrxrBuXeqGeY?width=2252&height=4000&cropmode=none
 
   - name: PB7ZBdfzA7ppY3EThG0JFFzubso8s2fg
     target:
