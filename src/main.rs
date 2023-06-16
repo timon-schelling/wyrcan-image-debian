@@ -112,6 +112,8 @@ impl Target {
                                 body, html {{
                                     height: 100%;
                                     margin: 0;
+                                    background-color: #141414;
+                                    color: #414143;
                                 }}
                                 .bg {{
                                     background-image: url("{}");
@@ -119,12 +121,6 @@ impl Target {
                                     background-position: center;
                                     background-repeat: no-repeat;
                                     background-size: contain;
-                                }}
-                                @media (prefers-color-scheme: dark) {{
-                                    body {{
-                                        background-color: #141414;
-                                        color: #414143;
-                                    }}
                                 }}
                             </style>
                         </head>
