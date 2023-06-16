@@ -1,10 +1,10 @@
-use std::str::FromStr;
+use std::{str::FromStr, fmt::Display};
 
 use axum::{
     body::BoxBody,
     extract::Path,
     http::{HeaderMap, HeaderValue, Response, StatusCode},
-    response::{IntoResponse, Redirect},
+    response::{IntoResponse, Redirect, Html},
     routing::get,
     Router,
 };
@@ -68,9 +68,19 @@ impl FromStr for Os {
     }
 }
 
+#[derive(Clone, Debug)]
 enum Resolved {
     Redirect(String),
     Html(String),
+}
+
+impl Display for Resolved {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Resolved::Redirect(url) => write!(f, "Redirect({})", url),
+            Resolved::Html(html) => write!(f, "HTML(\n{}\n)", html),
+        }
+    }
 }
 
 impl Target {
@@ -94,9 +104,30 @@ impl Target {
                 _ => format!("https://open.spotify.com/track/{}", track),
             })),
             Target::Image { url } => {
-                let text = format!("<img src=\"{}\"/>", url);
-                let encoded = base64::Engine::encode(&base64::engine::general_purpose::STANDARD, text.as_bytes());
-                Some(format!("data:text/html;charset=utf-8;base64,{}", encoded))
+                let html = format!(r#"<!DOCTYPE html>
+                    <html>
+                        <head>
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <style>
+                                body, html {{
+                                    height: 100%;
+                                    margin: 0;
+                                }}
+                                .bg {{
+                                    background-image: url("{}");
+                                    height: 100%;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                }}
+                            </style>
+                        </head>
+                        <body>
+                            <div class="bg"></div>
+                        </body>
+                    </html>
+                "#, url);
+                Some(Resolved::Html(html))
             },
         }
     }
@@ -164,14 +195,22 @@ async fn handler(
         None => return StatusCode::NOT_FOUND.into_response(),
     };
 
-    let target = match target.resolve(headers) {
+    let resolved = match target.resolve(headers) {
         Some(target) => target,
         None => return StatusCode::NOT_FOUND.into_response(),
     };
 
-    println!("{}/{} -> {}", zone_name, route_name, target);
+    tracing::info!("{}/{} -> {}", zone_name, route_name, resolved);
 
-    Redirect::temporary(&target).into_response()
+    match resolved {
+        Resolved::Redirect(url) => {
+            Redirect::temporary(&url).into_response()
+        }
+        Resolved::Html(html) => {
+            Html(html).into_response()
+        }
+    }
+
 }
 
 async fn get_raw_file_content() -> Result<String, reqwest::Error> {
