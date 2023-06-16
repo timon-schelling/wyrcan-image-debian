@@ -40,6 +40,7 @@ enum Target {
     Random { targets: Vec<Target> },
     YouTube { video: String },
     Spotify { track: String },
+    Image { url: String },
 }
 
 #[derive(Clone, Debug)]
@@ -88,6 +89,7 @@ impl Target {
                 Os::AppleMobile => Some(format!("spotify://track/{}", track)),
                 _ => Some(format!("https://open.spotify.com/track/{}", track)),
             },
+            Target::Image { url } => Some(format!("data:text/html,<img src=\"{}\"/>", url)),
         }
     }
 }
