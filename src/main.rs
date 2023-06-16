@@ -120,6 +120,12 @@ impl Target {
                                     background-repeat: no-repeat;
                                     background-size: contain;
                                 }}
+                                @media (prefers-color-scheme: dark) {{
+                                    body {{
+                                        background-color: #141414;
+                                        color: #414143;
+                                    }}
+                                }}
                             </style>
                         </head>
                         <body>
