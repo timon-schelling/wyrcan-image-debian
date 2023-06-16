@@ -2,6 +2,7 @@ name: NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q # Merle
 # unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/route
 # http://unme-nfcbox.timokrates.de/NbWsKB95hC3lnk60NaEvZ6NFU3IoCb5Q/
 routes:
+
   - name: eAPKIBQstWfT41uMpwGb5wWBBGoqavsU
     target:
       type: YouTube
@@ -11,6 +12,17 @@ routes:
     target:
       type: Spotify
       track: 0D0nm58zp7QfNR1kMSkElZ
+
+  - name: bLOwzMyzkAAtPueflfozuZ0HFJBQCSLi
+    target:
+      type: Random
+      targets:
+        - type: YouTube
+          video: dQw4w9WgXcQ
+        - type: YouTube
+          video: dQw4w9WgXcQ
+        - type: Spotify
+          track: 0D0nm58zp7QfNR1kMSkElZ
 
   - name: PB7ZBdfzA7ppY3EThG0JFFzubso8s2fg
     target:
@@ -46,8 +58,3 @@ routes:
     target:
       type: Url
       url: https://timokrates.de/7
-
-  - name: bLOwzMyzkAAtPueflfozuZ0HFJBQCSLi
-    target:
-      type: Url
-      url: https://timokrates.de/8
