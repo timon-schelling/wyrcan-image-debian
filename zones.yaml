@@ -112,8 +112,8 @@ routes:
 
   - name: Y1MDNNXyy6Hb0zfUPzofhcw6q7OlIMbm # 8 Epsilon
     target:
-      type: Url
-      url: https://timokrates.de/unme-nfcbox/8
+      type: Image
+      url: https://cataas.com/cat
 
   - name: dVHbxigIbR2LpQ0HsloClbQkpTNNt5jG # 9 Moon
     target:
