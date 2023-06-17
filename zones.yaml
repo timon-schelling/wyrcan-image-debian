@@ -35,22 +35,22 @@ routes:
   - name: vlUVa4JpZJLauTZr6XSJfq9N2NhuLCMT # 0 Lost
     target:
       type: Image
-      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: OVBVYfbiom5d3ZI8YJMSe8Xy9vYXcxGL # 1 Heart
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: iZd0qv0oqZYRNRnx6IeYfVQIQz5VznXU # 2 Galaxy
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: cI0504bPVq0Y9wzZn16n8OVmxszhAGVQ # 3 Ocean
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: FKcHPQKYbmyziLL41XV2b51Og6Bl3uZM # 4 Mountain
     target:
@@ -97,8 +97,8 @@ routes:
 
   - name: zE3vwbQwkAZ7Lz0hMFu49SY5QorVZDeO # 5 Swerle
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: eGMS80uMZC8PuRNnAbRyBFD5ZGQnUdZp # 6 Ravine
     target:
@@ -107,8 +107,8 @@ routes:
 
   - name: knVzDKDCM9cMAKPrfcLg6t3WNb157UvH # 7 Infinity
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: Y1MDNNXyy6Hb0zfUPzofhcw6q7OlIMbm # 8 Epsilon
     target:
@@ -117,23 +117,23 @@ routes:
 
   - name: dVHbxigIbR2LpQ0HsloClbQkpTNNt5jG # 9 Moon
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: 7VCrMmrrtrHUF47ncDP8UHrTqX6JrSlm # 10 Cube
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: t9Flo4OuPf3yr1CNLk5ReDwnctSDNaDk # 11 Star
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
   - name: 06ofqIIcAVi6UIKpEnSaQxFlRRR4eHKd # 12 Wave
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
 
 
 
