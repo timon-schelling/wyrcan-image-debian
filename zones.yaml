@@ -44,8 +44,41 @@ routes:
 
   - name: iZd0qv0oqZYRNRnx6IeYfVQIQz5VznXU # 2 Galaxy
     target:
-      type: Image
-      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif # placeholder
+      type: Random
+      targets:
+        - type: YouTube
+          video: dQw4w9WgXcQ
+        - type: YouTube
+          video: QH2-TGUlwu4
+        - type: YouTube
+          video: F4sv53yydA8
+        - type: YouTube
+          video: wWSJYr1Lr0E
+        - type: YouTube
+          video: UjtOGPJ0URM
+        - type: YouTube
+          video: xAUJYP8tnRE
+        - type: YouTube
+          video: Qsbe1pD8ocE
+        - type: YouTube
+          video: LEENEFaVUzU
+        - type: YouTube
+          video: FfWtIaDtfYk
+        - type: YouTube
+          video: QqsLTNkzvaY
+        - type: YouTube
+          video: 9P6rdqiybaw
+        - type: YouTube
+          video: 4_aOIA-vyBo
+        - type: YouTube
+          video: Da-2h2B4faU
+        - type: YouTube
+          video: PZHESOq-Gkw
+        - type: YouTube
+          video: QH2-TGUlwu4
+        - type: YouTube
+          video: QH2-TGUlwu4
+
 
   - name: cI0504bPVq0Y9wzZn16n8OVmxszhAGVQ # 3 Ocean
     target:
