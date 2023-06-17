@@ -34,8 +34,8 @@ routes:
 
   - name: vlUVa4JpZJLauTZr6XSJfq9N2NhuLCMT # 0 Lost
     target:
-      type: Url
-      url: https://giphy.com/embed/a93jwI0wkWTQs
+      type: Image
+      url: https://media.tenor.com/O2RBK9klEMYAAAAC/homer-simpson-homer.gif
 
   - name: OVBVYfbiom5d3ZI8YJMSe8Xy9vYXcxGL # 1 Heart
     target:
