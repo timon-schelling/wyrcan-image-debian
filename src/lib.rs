@@ -12,12 +12,8 @@ use fast_uaparser::{OperatingSystem, ParserError};
 use rand::seq::SliceRandom;
 use serde::{Deserialize, Serialize};
 
-#[shuttle_runtime::main]
-async fn routing() -> shuttle_axum::ShuttleAxum {
-    fast_uaparser::init().expect("Failed to initialize uaparser");
-
-    let router = Router::new().route("/:zone/:route", get(handler));
-    Ok(router.into())
+pub fn router() -> Router {
+    Router::new().route("/:zone/:route", get(handler))
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -85,6 +81,8 @@ impl Display for Resolved {
 
 impl Target {
     fn resolve(&self, headers: HeaderMap) -> Option<Resolved> {
+        fast_uaparser::init().expect("Failed to initialize uaparser");
+
         let user_agent_str = headers.get("user-agent")?.to_str().ok()?;
         let os = user_agent_str.parse::<Os>().ok()?;
         match self {
@@ -185,8 +183,6 @@ async fn handler(
         })
         .next();
 
-    dbg!(route);
-
     let route = match route {
         Some(route) => route,
         None => return StatusCode::NOT_FOUND.into_response(),
@@ -202,7 +198,14 @@ async fn handler(
         None => return StatusCode::NOT_FOUND.into_response(),
     };
 
-    tracing::info!("{}/{} -> {}", zone_name, route_name, resolved);
+    match resolved {
+        Resolved::Html(_) => {
+            tracing::info!("{}/{} -> HTML", zone_name, route_name);
+            tracing::debug!("{}/{} -> {}", zone_name, route_name, resolved)
+        },
+        _ => tracing::info!("{}/{} -> {}", zone_name, route_name, resolved),
+    }
+
 
     match resolved {
         Resolved::Redirect(url) => {
