@@ -19,14 +19,27 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-          - linux/amd64
-          - linux/arm/v6
-          - linux/arm/v7
-          - linux/arm64
+          - docker: linux/amd64
+            rust: x86_64-unknown-linux-gnu
+          - docker: linux/arm/v7
+            rust: armv7-unknown-linux-gnueabihf
+          - docker: linux/arm64
+            rust: aarch64-unknown-linux-gnu
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          target: ${{ matrix.platform.rust }}
+          profile: minimal
+          default: true
+
+      - name: Build
+        run: cargo build --release
 
       - name: Log in to the Container registry
         uses: docker/login-action@v2
@@ -37,8 +50,6 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
-        with:
-          platforms: 'arm64,arm'
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -52,8 +63,9 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          platforms: ${{ matrix.platform }}
+          platforms: ${{ matrix.platform.docker }}
           context: .
+          file: ./Dockerfile.use_prebuilt
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
