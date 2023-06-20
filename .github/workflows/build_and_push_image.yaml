@@ -63,7 +63,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            latest-${{ matrix.platform.name }}
+            main-${{ matrix.platform.name }}
           # ${{ env.GITHUB_SHA }}-${{ matrix.platform.name }}
 
       - name: Build and push Docker image
@@ -96,7 +96,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
-            latest
+            main
           # ${{ env.GITHUB_SHA }}
 
       - uses: int128/docker-manifest-create-action@v1
