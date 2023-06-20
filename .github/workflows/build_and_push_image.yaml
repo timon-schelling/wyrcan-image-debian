@@ -65,7 +65,7 @@ jobs:
         with:
           platforms: ${{ matrix.platform.docker }}
           context: .
-          file: ./Dockerfile.use_prebuilt
+          file: ./Dockerfile.use_prebuild
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
