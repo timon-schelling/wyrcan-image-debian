@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ env.GITHUB_REPOSITORY }}
+  IMAGE_NAME: timon-schelling/rtrs
 
 jobs:
   build:
