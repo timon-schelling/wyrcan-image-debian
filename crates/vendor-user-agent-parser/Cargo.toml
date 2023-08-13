@@ -7,7 +7,7 @@ readme = "README.md"
 repository = "https://gitlab.com/philbooth/uaparser-rs"
 documentation = "https://philbooth.gitlab.io/uaparser-rs/fast_uaparser/"
 description = "Regex-based parser for User-Agent request headers"
-keywords = ["user-agent","ua","header","parser"]
+keywords = ["user-agent", "ua", "header", "parser"]
 categories = ["parsing"]
 authors = ["Phil Booth <pmbooth@gmail.com>"]
 build = "build.rs"
@@ -20,7 +20,11 @@ serde = ">=1.0.97"
 
 [build-dependencies]
 fancy-regex-fork-pb = "0.1.1"
-reqwest = { version = ">=0.9.19", features = ["rustls-tls"] }
+reqwest = { version = "0.11", default-features = false, features = [
+    "blocking",
+    "json",
+    "rustls-tls",
+] }
 serde = { version = ">=1.0.97", features = ["derive"] }
 serde_yaml = ">=0.8.9"
 tokio = { version = ">=0.2.11", features = ["full"] }
