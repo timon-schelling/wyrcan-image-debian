@@ -39,7 +39,7 @@ jobs:
           target: ${{ matrix.platform.target }}
           toolchain: ${{ matrix.toolchain }}
           command: "build"
-          args: "--path crates/rtrs --locked --release"
+          args: "-p rtrs --locked --release"
       - name: Package as archive
         shell: bash
         run: |
