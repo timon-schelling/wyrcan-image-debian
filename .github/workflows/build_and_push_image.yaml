@@ -39,7 +39,7 @@ jobs:
           target: ${{ matrix.platform.target }}
           toolchain: ${{ matrix.toolchain }}
           command: "build"
-          args: "--locked --release"
+          args: "--path crates/rtrs --locked --release"
       - name: Package as archive
         shell: bash
         run: |
@@ -82,7 +82,7 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: context
-        file: Dockerfile.standalone
+        file: Dockerfile.use_prebuilt
         platforms: linux/amd64,linux/arm/v7
         push: true
         tags: ghcr.io/${{ github.repository }}:latest

@@ -34,7 +34,7 @@ async fn main() {
 
     let address = SocketAddr::new(ip, port);
 
-    let router = rtrs_lib::router();
+    let router = rtrs::router();
 
     println!("Server listening on {}", address);
     axum::Server::bind(&address)

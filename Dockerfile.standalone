@@ -1,7 +1,7 @@
 FROM rust as builder
 WORKDIR /usr/src/rtrs
 COPY . .
-RUN cargo install --path .
+RUN cargo install --path crates/rtrs --locked --release
 
 FROM scratch
 COPY --from=builder /usr/local/cargo/bin/rtrs /rtrs
