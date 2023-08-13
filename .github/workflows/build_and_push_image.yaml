@@ -35,7 +35,7 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Install build-essential
         run: |
-          sudo apt install build-essential
+          sudo apt install musl-tools
       - name: Build binary
         uses: houseabsolute/actions-rust-cross@v0
         with:
