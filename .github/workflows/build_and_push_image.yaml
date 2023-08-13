@@ -1,108 +1,88 @@
-name: Build and publish image
+name: build
 
 on:
   push:
-    branches: ['main']
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: timon-schelling/rtrs
+  RUST_BACKTRACE: 1
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
+  build:
+    name: ${{ matrix.platform.os_name }} with rust ${{ matrix.toolchain }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         platform:
-          - name: linux-amd64
-            rust: x86_64-unknown-linux-gnu
-            docker: linux/amd64
-          - name: linux-armv7
-            rust: armv7-unknown-linux-gnueabihf
-            docker: linux/arm/v7
-          - name: linux-arm64
-            rust: aarch64-unknown-linux-gnu
-            docker: linux/arm64
-
+          - os_name: linux-amd64
+            target: x86_64-unknown-linux-musl
+            bin: rtrs
+            name: rtrs-linux-amd64.tar.gz
+          - os_name: linux-arm
+            target: arm-unknown-linux-musleabi
+            bin: rtrs
+            name: rtrs-linux-arm.tar.gz
+        toolchain:
+          - nightly
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Rust
-        uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v3
+      - name: Cache cargo & target directories
+        uses: Swatinem/rust-cache@v2
+      - name: Build binary
+        uses: houseabsolute/actions-rust-cross@v0
         with:
-          toolchain: nightly
-          target: ${{ matrix.platform.rust }}
-          profile: minimal
-          default: true
-
-      - name: Build
-        run: cargo build --release
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v2
+          target: ${{ matrix.platform.target }}
+          toolchain: ${{ matrix.toolchain }}
+          command: "build"
+          args: "-p rtrs --locked --release"
+      - name: Package as archive
+        shell: bash
+        run: |
+          cd target/${{ matrix.platform.target }}/release
+          tar czvf ../../../${{ matrix.platform.name }} ${{ matrix.platform.bin }}
+          cd -
+      - name: Publish release artifacts
+        uses: actions/upload-artifact@v3
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          name: rtrs-${{ matrix.platform.os_name }}
+          path: "rtrs-*"
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            main-${{ matrix.platform.name }}
-          # ${{ env.GITHUB_SHA }}-${{ matrix.platform.name }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          platforms: ${{ matrix.platform.docker }}
-          context: .
-          file: ./Dockerfile.use_prebuild
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-
-  build-multi-architecture:
+  image:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     needs: build
-
     steps:
-      - uses: docker/login-action@v2
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Install Docker
+      uses: docker/setup-buildx-action@v2
 
-      - uses: docker/metadata-action@v4
-        id: metadata
-        with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
-          tags: |
-            main
-          # ${{ env.GITHUB_SHA }}
+    - uses: actions/download-artifact@v3
+      with:
+        name: rtrs-linux-arm
+        path: context
+    - uses: actions/download-artifact@v3
+      with:
+        name: rtrs-linux-amd64
+        path: context
 
-      - uses: int128/docker-manifest-create-action@v1
-        with:
-          tags: ${{ steps.metadata.outputs.tags }}
-          suffixes: |
-            -linux-amd64
-            -linux-armv7
-            -linux-arm64
+    - name: 'Login to GitHub Container Registry'
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build image
+      uses: docker/build-push-action@v4
+      with:
+        context: context
+        file: Dockerfile.standalone
+        platforms: linux/amd64,linux/arm/v7
+        push: true
+        tags: ghcr.io/${{ github.repository }}:latest
