@@ -1,8 +1,8 @@
-FROM gcr.io/distroless/static-debian11 as amd64
+FROM debian as amd64
 COPY rtrs-linux-amd64.tar.gz /app
 RUN chmod +x /app
 
-FROM gcr.io/distroless/static-debian11 as arm
+FROM debian as arm
 ADD rtrs-linux-arm.tar.gz /app
 RUN chmod +x /app
 
