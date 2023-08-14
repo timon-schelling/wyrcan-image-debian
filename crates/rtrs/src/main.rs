@@ -36,6 +36,9 @@ async fn main() {
 
     let router = rtrs::router();
 
+    println!("Initializing user agent parser");
+    fast_uaparser::init().expect("Failed to initialize user agent parser");
+
     println!("Server listening on {}", address);
     axum::Server::bind(&address)
         .serve(router.into_make_service())

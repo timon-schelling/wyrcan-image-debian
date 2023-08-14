@@ -81,8 +81,6 @@ impl Display for Resolved {
 
 impl Target {
     fn resolve(&self, headers: HeaderMap) -> Option<Resolved> {
-        fast_uaparser::init().expect("Failed to initialize uaparser");
-
         let user_agent_str = headers.get("user-agent")?.to_str().ok()?;
         let os = user_agent_str.parse::<Os>().ok()?;
         match self {
