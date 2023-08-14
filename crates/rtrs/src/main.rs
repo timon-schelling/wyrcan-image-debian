@@ -1,9 +1,13 @@
 use std::net::{IpAddr, SocketAddr};
+use tracing_subscriber::prelude::*;
 
-use clap::{command, crate_name, crate_version, crate_authors, crate_description, arg};
+use clap::{arg, command, crate_authors, crate_description, crate_name, crate_version};
 
 #[tokio::main]
 async fn main() {
+    let stdout_log = tracing_subscriber::fmt::layer().pretty();
+    tracing_subscriber::registry().with(stdout_log).init();
+
     let matches = command!(crate_name!())
         .version(crate_version!())
         .author(crate_authors!())
@@ -36,10 +40,11 @@ async fn main() {
 
     let router = rtrs::router();
 
-    println!("Initializing user agent parser");
+    tracing::info!("initializing user agent parser");
     fast_uaparser::init().expect("Failed to initialize user agent parser");
+    tracing::info!("done initializing user agent parser");
 
-    println!("Server listening on {}", address);
+    tracing::info!("server listening on {}", address);
     axum::Server::bind(&address)
         .serve(router.into_make_service())
         .await

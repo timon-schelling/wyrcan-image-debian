@@ -81,8 +81,9 @@ impl Display for Resolved {
 
 impl Target {
     fn resolve(&self, headers: HeaderMap) -> Option<Resolved> {
-        let user_agent_str = headers.get("user-agent")?.to_str().ok()?;
-        let os = user_agent_str.parse::<Os>().ok()?;
+        // let user_agent_str = headers.get("user-agent")?.to_str().ok()?;
+        // let os = user_agent_str.parse::<Os>().ok()?;
+        let os = Os::AppleMobile;
         match self {
             Target::Url { url } => Some(Resolved::Redirect(url.clone())),
             Target::Random { targets } => {
@@ -135,7 +136,9 @@ async fn handler(
     headers: HeaderMap,
     Path((zone_name, route_name)): Path<(String, String)>,
 ) -> Response<BoxBody> {
+    tracing::trace!("downloading zones.yaml");
     let resp = get_raw_file_content().await;
+    tracing::trace!("done downloading zones.yaml");
 
     let zones_str = match resp {
         Ok(resp) => resp,
@@ -198,10 +201,10 @@ async fn handler(
 
     match resolved {
         Resolved::Html(_) => {
-            tracing::info!("{}/{} -> HTML", zone_name, route_name);
-            tracing::debug!("{}/{} -> {}", zone_name, route_name, resolved)
+            tracing::debug!("{}/{} -> HTML", zone_name, route_name);
+            tracing::trace!("{}/{} -> {}", zone_name, route_name, resolved)
         },
-        _ => tracing::info!("{}/{} -> {}", zone_name, route_name, resolved),
+        _ => tracing::debug!("{}/{} -> {}", zone_name, route_name, resolved),
     }
 
 
